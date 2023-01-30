@@ -1,0 +1,117 @@
+---
+namespace: phpmyadmin
+
+common:
+  metadata:
+    publisher: monk.io
+    email: jakub@monk.io
+    tags: phpmyadmin, mysqldb, mariadb, database
+    icon: https://www.phpmyadmin.net/static/images/logo.png
+    description: phpMyAdmin is a free software tool written in PHP, intended to handle the administration of MySQL over the Web
+    name: phpMyAdmin
+    version: 1.0
+    website: https://www.phpmyadmin.net/
+    source: https://github.com/phpmyadmin
+  variables:
+    PMA_ARBITRARY:
+      type: string
+      value: ''
+      env: <- $PMA_ARBITRARY not-eq?("") then("PMA_ARBITRARY") or("_")
+    PMA_HOST:
+      type: string
+      value: ''
+      env: <- $PMA_HOST not-eq?("") then("PMA_HOST") or("_")
+    PMA_VERBOSE:
+      type: string
+      value: ''
+      env: <- $PMA_VERBOSE not-eq?("") then("PMA_VERBOSE") or("_")
+    PMA_PORT:
+      type: string
+      value: ''
+      env: <- $PMA_PORT not-eq?("") then("PMA_PORT") or("_")
+    PMA_HOSTS:
+      type: string
+      value: ''
+      env: <- $PMA_HOSTS not-eq?("") then("PMA_HOSTS") or("_")
+    PMA_VERBOSES:
+      type: string
+      value: ''
+      env: <- $PMA_VERBOSES not-eq?("") then("PMA_VERBOSES") or("_")
+    PMA_PORTS:
+      type: string
+      value: ''
+      env: <- $PMA_PORTS not-eq?("") then("PMA_PORTS") or("_")
+    PMA_USER:
+      type: string
+      value: ''
+      env: <- $PMA_USER not-eq?("") then("PMA_USER") or("_")
+    PMA_PASSWORD:
+      type: string
+      value: ''
+      env: <- $PMA_PASSWORD not-eq?("") then("PMA_PASSWORD") or("_")
+    PMA_ABSOLUTE_URI:
+      type: string
+      value: ''
+      env: <- $PMA_ABSOLUTE_URI not-eq?("") then("PMA_ABSOLUTE_URI") or("_")
+    PMA_CONFIG_BASE64:
+      type: string
+      value: ''
+      env: <- $PMA_CONFIG_BASE64 not-eq?("") then("PMA_CONFIG_BASE64") or("_")
+    PMA_USER_CONFIG_BASE64:
+      type: string
+      value: ''
+      env: <- $PMA_USER_CONFIG_BASE64 not-eq?("") then("PMA_USER_CONFIG_BASE64") or("_")
+    PMA_CONTROLHOST:
+      type: string
+      value: ''
+      env: <- $PMA_CONTROLHOST not-eq?("") then("PMA_CONTROLHOST") or("_")
+    PMA_CONTROLPORT:
+      type: string
+      value: '3306'
+      env: <- $PMA_CONTROLPORT not-eq?("") then("PMA_CONTROLPORT") or("_")
+    PMA_PMADB:
+      type: string
+      value: ''
+      env: <- $PMA_PMADB not-eq?("") then("PMA_PMADB") or("_")
+    PMA_CONTROLUSER:
+      type: string
+      value: ''
+      env: <- $PMA_CONTROLUSER not-eq?("") then("PMA_CONTROLUSER") or("_")
+    PMA_CONTROLPASS:
+      type: string
+      value: ''
+      env: <- $PMA_CONTROLPASS not-eq?("") then("PMA_CONTROLPASS") or("_")
+    PMA_QUERYHISTORYDB:
+      type: string
+      value: ''
+      env: <- $PMA_QUERYHISTORYDB not-eq?("") then("PMA_QUERYHISTORYDB") or("_")
+    PMA_QUERYHISTORYMAX:
+      type: string
+      value: '25'
+      env: <- $PMA_QUERYHISTORYMAX not-eq?("") then("PMA_QUERYHISTORYMAX") or("_")
+    MAX_EXECUTION_TIME:
+      type: string
+      value: '600'
+      env: <- $MAX_EXECUTION_TIME not-eq?("") then("MAX_EXECUTION_TIME") or("_")
+    MEMORY_LIMIT:
+      type: string
+      value: 512M
+      env: <- $MEMORY_LIMIT not-eq?("") then("MEMORY_LIMIT") or("_")
+    UPLOAD_LIMIT:
+      type: string
+      value: 10M
+      env: <- $UPLOAD_LIMIT not-eq?("") then("UPLOAD_LIMIT") or("_")
+    HIDE_PHP_VERSION:
+      type: string
+      value: 'true'
+      env: <- $HIDE_PHP_VERSION not-eq?("") then("HIDE_PHP_VERSION") or("_")
+
+phpmyadmin:
+  defines: runnable
+  inherits: /phpmyadmin/common
+  containers:
+    phpmyadmin:
+      image: phpmyadmin
+      image-tag: latest
+      ports:
+        - 80:80
