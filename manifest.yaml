@@ -111,5 +111,9 @@ phpmyadmin:
     phpmyadmin:
       image: phpmyadmin
       image-tag: latest
-      ports:
-        - 80:80
+  services:
+    server:
+      container: phpmyadmin
+      port: 80
+      protocol: tcp
+      host-port: 80
