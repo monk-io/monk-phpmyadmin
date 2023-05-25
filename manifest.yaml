@@ -4,7 +4,7 @@ namespace: phpmyadmin
 common:
   metadata:
     publisher: monk.io
-    tags: sql, database maintenance, mysql management, database security, database management, database connectivity, table management, web-based interface, database administration, query building, sql queries, data manipulation
+    tags: sql, database, management, dba, sql queries, data manipulation
     icon: https://www.phpmyadmin.net/static/images/logo.png
     description: |
       phpMyAdmin is a free and open-source web-based interface for managing MySQL databases.
